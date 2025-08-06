@@ -1,4 +1,4 @@
-FROM python:3.10.8-slim-buster
+FROM python:3.10.8-slim-bookworm
 RUN apt-get update -y &&  upgrade -y \
     && apt-get install -y --no-install-recommends gcc libffi-dev musl-dev ffmpeg aria2 python3-pip \
     && apt-get clean \
@@ -8,4 +8,5 @@ COPY . /app/
 WORKDIR /app/
 RUN pip3 install --no-cache-dir --upgrade --requirement requirements.txt
 CMD gunicorn app:app & python3 main.py
+
 
